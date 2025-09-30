@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wenesy cosmetics is coming soon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="content-left">
+            <img class="logo" src="./images/logo.png" alt="Wenesy cosmetics">
+            <img class="title" src="./images/title.png" alt="coming soon">
+            <p>Our website is currently under construction.</p>
+            <p>We’re working hard to bring you a brand-new online shopping experience.</p>
+            <p>Expected Launch Date: 15 Nov 2025</p>
+        </div>
+        <div class="content-right">
+            <div class="content-right-title">STAY CONNECTED</div>
+            <p>Enter your email below and we'll notify you as soon as our store opens.</p>
+            <form id="myForm" class="form">
+                <div class="form-input">
+                    <input name="email" id="email" type="email" placeholder="Email Address*" required>
+                </div>
+                <button type="submit">Subscribe<img src="./images/arrow-right.png" alt="arrow right"></button>
+            </form>
+            <p>By subscribing, you agree to receive emails from WENESY. We respect your privacy.</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright © Wenesy Cosmetics Ltd. Sitemap</p>
+    </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#myForm').submit(function(e) {
+        e.preventDefault(); // 阻止表单默认提交
+        var formData = $(this).serialize(); // 获取表单数据
+        $.ajax({
+            url: 'https://hooks.zapier.com/hooks/catch/24801127/u9y90m5/', // 替换为你的Webhook URL
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                console.log('Data sent successfully', response);
+                alert('Subscription successful!');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error sending data to Zapier', error);
+                alert('Subscription failed, please try again later!');
+            }
+        });
+    });
+});
+</script>
